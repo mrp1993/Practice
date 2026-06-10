@@ -3,7 +3,7 @@ import time
 import sqlite3
 
 def sql_connector():
-    con = sqlite3.connect("D:\GitHub\Practice\Weather\weather_data.db")
+    con = sqlite3.connect("weather_data.db")
     cur = con.cursor()
     return con, cur
 
@@ -17,8 +17,8 @@ def insert_data(con, cur, data):
                 (data["location"], data["datetime"], data["temperature_c"], data["humidity"]))
     con.commit()
 
-def get_weather_data(city, key="d872fa1715754a2788c115152261006"):
-    url = "http://api.weatherapi.com/v1/current.json"
+def get_weather_data(city, key="your API key"):
+    url = "your API url"
     q = city
     querystring = {"key": key, "q": q}
     response = requests.get(url, params=querystring)
